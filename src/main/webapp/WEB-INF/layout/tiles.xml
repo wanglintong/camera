@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!--定义/layout/ mainLayout.jsp的组成名称为bugbase.mainLayout -->
+	<definition name="base" template="/WEB-INF/layout/base.jsp">
+	</definition>
+	
+	<definition name="cameraDistribution" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/cameraDistribution.jsp" />
+	</definition>
+	<definition name="photoIdentification" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/photoIdentification.jsp" />
+	</definition>
+	<definition name="historicalData" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/historicalData.jsp" />
+	</definition>
+</tiles-definitions>

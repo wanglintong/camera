@@ -1,0 +1,58 @@
+.newDutyDiv {
+	float: left;
+	border: 1px solid green;
+	width: 28%;
+	height: 200px;
+	margin-left: 45px;
+	margin-top: 35px;
+	line-height: 200px;
+	text-align: center;
+}
+
+.dutyDiv {
+	position: relative;
+	float: left;
+	border: 1px solid green;
+	width: 28%;
+	height: 200px;
+	margin-left: 45px;
+	margin-top: 35px;
+	line-height: 200px;
+	text-align: center
+}
+
+.publishDiv {
+	background-color: #00AEAE;
+	height: 35px;
+	width: 50px;
+	text-align: center;
+	line-height: 35px;
+	position: absolute;
+	right: 0;
+	bottom: 0
+}
+
+/**文件上传css**/
+#selectDiv {
+	float:left;
+	margin: 50px auto;
+	margin-left:30px;
+	padding:0px;
+	width: 10%;
+	min-height: 450px;
+	max-height:450px;
+}
+#photos {
+	float:left;
+	margin: 50px auto;
+	margin-left:70px;
+	padding:20px;
+	width: 78%;
+	min-height: 450px;
+	max-height:450px;
+	overflow: auto;
+	background: aliceblue;
+}
+.checkTR {
+	background-color: 	#DDDDDD;
+}
