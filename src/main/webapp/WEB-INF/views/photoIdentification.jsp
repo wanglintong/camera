@@ -4,15 +4,17 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/res/css/photoIdentification.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/res/webuploader/css/webuploader.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/res/webuploader/css/diyUpload.css">
+<style>
+a:hover {
+	text-decoration: none;
+}
 
+a:-webkit-any-link {
+	cursor: auto;
+	text-decoration: none;
+}
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/res/js/less.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/res/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/res/js/lib.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/res/js/vue.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/res/webuploader/js/webuploader.html5only.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/res/webuploader/js/diyUpload.js"></script>
-
+</style>
 <div id="app">
 	<blockquote class="layui-elem-quote">
 		<div style="position: relative; height: 26px">
@@ -112,7 +114,7 @@
 			<h2 style="color: green;">文件预操作</h2>
 		</div>
 		<div id="selectDiv">
-			<table class="layui-table" lay-skin="row" style="margin-top: 0px">
+			<table class="layui-table" lay-skin="row" style="margin-top: 0px; width: 100%">
 				<tr>
 					<td>
 						<select name="fileName">
@@ -137,15 +139,15 @@
 		<div id="photos">
 			<div id="as"></div>
 		</div>
-		<div style="width: 70%; margin: 0 auto">
-			<div align="right" style="margin-top: 10px">
-				<button class="layui-btn" @click='preStep'>上一步</button>
-				<button class="layui-btn layui-btn-danger" @click='nextStep'>下一步</button>
-			</div>
+		<div id="photoMsg">
+			<img id="imgInfo" style="width: 100%; height: 100%" />
 		</div>
-		<div style="height: 300px"></div>
+		<div style="float: right; margin-right: 200px; margin-top: 60px">
+			<button class="layui-btn" @click='preStep'>上一步</button>
+			<button class="layui-btn layui-btn-danger" @click='nextStep'>下一步</button>
+		</div>
+		<div style="float: right; height: 300px"></div>
 	</div>
-
 	<div id="infoCheck" style="height: 600px; margin: 20px" v-show="currentStep==4">
 		<div style="margin-left: 30px; margin-bottom: 30px">
 			<h2 style="color: green;">信息鉴定</h2>
@@ -214,8 +216,8 @@
 			</div>
 		</div>
 		<div id="mediaForm" style="border: 1px solid #DDDDDD; float: left; width: 30%; height: 400px; margin-left: 35px">
-			<form action="" style="width: 100%;height: 100%;padding-left: 30px">
-				<table style="width: 100%;height: 100%;padding: 5px;margin: 5px">
+			<form action="" style="width: 100%; height: 100%; padding-left: 30px">
+				<table style="width: 100%; height: 100%; padding: 5px; margin: 5px">
 					<tr>
 						<td>温度</td>
 						<td>自动填写</td>
@@ -235,39 +237,54 @@
 					<tr>
 						<td>对象类别</td>
 						<td>
-							<input type="radio" name="sex" value="动物">动物&nbsp;
-							<input type="radio" name="sex" value="植物">植物&nbsp;
-							<input type="radio" name="sex" value="真菌">真菌&nbsp;
+							<input type="radio" name="sex" value="动物">
+							动物&nbsp;
+							<input type="radio" name="sex" value="植物">
+							植物&nbsp;
+							<input type="radio" name="sex" value="真菌">
+							真菌&nbsp;
 						</td>
 					</tr>
 					<tr>
 						<td>物种名称</td>
-						<td><input type="text"></td>
+						<td>
+							<input type="text">
+						</td>
 					</tr>
 					<tr>
 						<td>动物数量</td>
-						<td><input type="text"></td>
+						<td>
+							<input type="text">
+						</td>
 					</tr>
 					<tr>
 						<td>物种性别</td>
 						<td>
-							<input type="radio" name="sex" value="动物">雌性&nbsp;
-							<input type="radio" name="sex" value="植物">雄性&nbsp;
-							<input type="radio" name="sex" value="真菌">雌雄都有&nbsp;
-							<input type="radio" name="sex" value="真菌">难以辨认&nbsp;
+							<input type="radio" name="sex" value="动物">
+							雌性&nbsp;
+							<input type="radio" name="sex" value="植物">
+							雄性&nbsp;
+							<input type="radio" name="sex" value="真菌">
+							雌雄都有&nbsp;
+							<input type="radio" name="sex" value="真菌">
+							难以辨认&nbsp;
 						</td>
 					</tr>
 					<tr>
 						<td>备注</td>
-						<td><input type="text"></td>
+						<td>
+							<input type="text">
+						</td>
 					</tr>
 					<tr>
-						<td colspan="2"><button type="reset" class="layui-btn">重置</button></td>
+						<td colspan="2">
+							<button type="reset" class="layui-btn">重置</button>
+						</td>
 					</tr>
 				</table>
 			</form>
 		</div>
-		<div style="width: 95%; margin: 0 auto;float: left">
+		<div style="width: 95%; margin: 0 auto; float: left">
 			<div align="right" style="margin-top: 20px">
 				<button class="layui-btn" @click='preStep'>上一步</button>
 				<button class="layui-btn layui-btn-danger" @click='nextStep'>结束</button>
@@ -278,10 +295,10 @@
 		<div style="margin-left: 30px; margin-bottom: 30px">
 			<h2 style="color: green;">鉴定完成</h2>
 		</div>
-		<div id="cameraInfo" style="width: 250px; height: 350px; margin: 0 auto;float: left;margin-left: 200px">
-			<table style="width: 100%;height: 100%;">
+		<div id="cameraInfo" style="width: 250px; height: 350px; margin: 0 auto; float: left; margin-left: 200px">
+			<table style="width: 100%; height: 100%;">
 				<tr>
-					<th style="color: #FF5511 ;font-size: 18px">相机信息</th>
+					<th style="color: #FF5511; font-size: 18px">相机信息</th>
 					<th></th>
 				</tr>
 				<tr>
@@ -314,10 +331,10 @@
 				</tr>
 			</table>
 		</div>
-		<div id="checkInfo" style="width: 250px; height: 350px; margin: 0 auto;float: left;margin-left: 100px">
-			<table style="width: 100%;height: 100%;">
+		<div id="checkInfo" style="width: 250px; height: 350px; margin: 0 auto; float: left; margin-left: 100px">
+			<table style="width: 100%; height: 100%;">
 				<tr>
-					<th style="color: #FF5511 ;font-size: 18px">鉴定信息</th>
+					<th style="color: #FF5511; font-size: 18px">鉴定信息</th>
 					<th></th>
 					<th></th>
 					<th></th>
@@ -367,12 +384,16 @@
 			</table>
 		</div>
 		<hr>
-		<div style="width: 85%; margin: 0 auto;float: left">
+		<div style="width: 85%; margin: 0 auto; float: left">
 			<div align="right" style="margin-top: 150px">
 				<button class="layui-btn" @click='finish'>继续鉴定</button>
 			</div>
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/res/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/res/js/less.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/res/js/lib.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/res/webuploader/js/webuploader.html5only.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/res/webuploader/js/diyUpload.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/res/js/photoIdentification.js"></script>

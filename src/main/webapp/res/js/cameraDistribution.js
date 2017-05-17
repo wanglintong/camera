@@ -1,3 +1,10 @@
+/** layui **/
+layui.use(['form','element'], function() {
+	var form = layui.form();
+	var element = layui.element();
+});
+
+/**vue js**/
 var app = new Vue({
 	el : '#app',
 	data : {
@@ -24,9 +31,6 @@ var app = new Vue({
 			this.showFormId = 1;
 		}
 	}
-});
-layui.use('form', function() {
-	var form = layui.form();
 });
 
 /** webuploader * */

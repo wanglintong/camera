@@ -12,49 +12,114 @@
 <script src="${pageContext.request.contextPath }/res/js/vue.min.js"></script>
 <script src="${pageContext.request.contextPath }/res/js/modules/camera.js"></script>
 <style type="text/css">
-.layui-nav .myClass {
-	position: relative;
+#bg {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10000;
+	left: 0;
+	background-color: #000;
+	opacity: .8;
+}
+
+#bigImg {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	margin: auto;
+	z-index: 10001;
+}
+
+#bigImgWithWord {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	margin: auto;
+	z-index: 10001;
+	background-color: #DDDDDD;
+}
+
+#imgInfo {
+	width: 68%;
+	height: 500px;
 	display: inline-block;
-	*display: inline;
-	*zoom: 1;
-	vertical-align: middle;
-	line-height: 60px
+	vertical-align: top;
+	margin: 20px;
+	margin-top: 0px;
 }
 
-.layui-nav .myClass a {
-	display: block;
-	padding: 0 20px;
-	color: #c2c2c2;
-	transition: all .3s;
-	-webkit-transition: all .3s
-}
-
-.layui-nav .myClass a:hover, .layui-nav .layui-this a {
-	color: #fff
-}
-
-.layui-nav-tree .myClass {
-	display: block;
-	width: 100%;
-	line-height: 45px
-}
-
-.layui-nav-tree .myClass a {
-	height: 45px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap
-}
-
-.layui-nav-tree .myClass a:hover {
-	background-color: #4E5465
-}
-.myClass .myThis {
-	background-color: #5FB878
+#wordInfo {
+	width: 25%;
+	height: 500px;
+	display: inline-block;
 }
 </style>
 </head>
 <body>
+	<div id="bg" style="display: none"></div>
+	<!-- 大图显示开始 -->
+	<div id="bigImg" style="width: 1024px; height: 768px; display: none;">
+		<img id="imgBig" style="width: 100%; height: 100%">
+	</div>
+	<!-- 大图显示结束 -->
+	<!-- 带文字描述的大图预览 -->
+	<div id="bigImgWithWord" style="width: 1024px; height: 570px; display: none;">
+		<div style="margin-top: 0; height: 35px; text-align: right;">
+			<a href="#" id="closeBigImgWithWord">
+				<i class="layui-icon" style="font-size: 32px">&#x1006;</i>
+			</a>
+		</div>
+		<img id="imgInfo" />
+		<div id="wordInfo">
+			<table class="layui-table" style="margin-top: 0px;background-color: #DDDDDD">
+				<tbody>
+					<tr>
+						<td>温度</td>
+						<td>28.3</td>
+					</tr>
+					<tr>
+						<td>物种鉴定人</td>
+						<td>张三</td>
+					</tr>
+					<tr>
+						<td>照片名称</td>
+						<td>xxxqaa</td>
+					</tr>
+					<tr>
+						<td>拍摄时间</td>
+						<td>18:45</td>
+					</tr>
+					<tr>
+						<td>对象类别</td>
+						<td>动物</td>
+					</tr>
+					<tr>
+						<td>物种名称</td>
+						<td>大熊猫</td>
+					</tr>
+					<tr>
+						<td>动物数量</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>物种性别</td>
+						<td>难以辨认</td>
+					</tr>
+					<tr>
+						<td>备注</td>
+						<td>备注zzzzz</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- 带文字描述的大图预览 -->
+
 	<!-- 布局容器 -->
 	<div class="layui-layout layui-layout-admin">
 		<!-- 头部 -->
@@ -62,10 +127,7 @@
 			<div class="layui-main">
 				<div class="top-left">
 					<!-- logo -->
-					<a href="/" class="logo">
-						<img src="${pageContext.request.contextPath }/res/imgs/logo.png" />
-						数字保护区
-					</a>
+					<a href="/" class="logo" style="bottom: 0px"> 数字保护区 </a>
 					<a href="javascript:;" class="menu-flexible" style="margin-right: 10px">
 						<i class="layui-icon" style="vertical-align: middle;"> &#xe60f; </i>
 					</a>
@@ -147,7 +209,7 @@
 		<!-- 左侧菜单 -->
 		<div class="layui-side layui-bg-black left-menu-all" id="baseApp">
 			<ul class="layui-nav layui-nav-tree left-menu">
-				<li v-bind:class="cameraDistributionClass">
+				<li id="li1" class="layui-nav-item">
 					<a href="${pageContext.request.contextPath }/cameraDistribution">
 						<i class="layui-icon">
 							<img src="${pageContext.request.contextPath }/res/imgs/cameraDistribution.png" />
@@ -156,7 +218,7 @@
 						<cite>相机分布</cite>
 					</a>
 				</li>
-				<li v-bind:class="photoIdentificationClass">
+				<li id="li2" class="layui-nav-item">
 					<a href="${pageContext.request.contextPath }/photoIdentification">
 						<i class="layui-icon">
 							<img src="${pageContext.request.contextPath }/res/imgs/photoIdentification.png" />
@@ -165,7 +227,7 @@
 						<cite>照片鉴定</cite>
 					</a>
 				</li>
-				<li v-bind:class="historicalDataClass">
+				<li id="li3" class="layui-nav-item">
 					<a href="${pageContext.request.contextPath }/historicalData">
 						<i class="layui-icon">
 							<img src="${pageContext.request.contextPath }/res/imgs/historicalData.png" />
@@ -174,7 +236,7 @@
 						<cite>历史数据</cite>
 					</a>
 				</li>
-				<li class="layui-nav-item">
+				<li id="li4" class="layui-nav-item">
 					<a href="javascript:;">
 						<i class="layui-icon">
 							<img src="${pageContext.request.contextPath }/res/imgs/statisticAnalysis.png" />
@@ -183,8 +245,8 @@
 						<cite>统计分析</cite>
 					</a>
 					<dl class="layui-nav-child">
-						<dd>
-							<a href="#" style="margin-left: 10px">
+						<dd id="dd1">
+							<a href="${pageContext.request.contextPath }/statisticsByAnimal" style="margin-left: 10px">
 								<i class="layui-icon">
 									<img src="${pageContext.request.contextPath }/res/imgs/animal.png" />
 								</i>
@@ -192,8 +254,8 @@
 								<cite>按动物统计</cite>
 							</a>
 						</dd>
-						<dd>
-							<a href="#" style="margin-left: 10px">
+						<dd id="dd2">
+							<a href="${pageContext.request.contextPath }/statisticsByTime" style="margin-left: 10px">
 								<i class="layui-icon">
 									<img src="${pageContext.request.contextPath }/res/imgs/time.png" />
 								</i>
@@ -201,8 +263,8 @@
 								<cite>按时间统计</cite>
 							</a>
 						</dd>
-						<dd>
-							<a href="#" style="margin-left: 10px">
+						<dd id="dd3">
+							<a href="${pageContext.request.contextPath }/statisticsByDistribution" style="margin-left: 10px">
 								<i class="layui-icon">
 									<img src="${pageContext.request.contextPath }/res/imgs/distribution.png" />
 								</i>
@@ -219,27 +281,36 @@
 		<div class="layui-body" style="bottom: 0; border-left: solid 2px #1AA094;">
 			<tiles:insertAttribute name="body" />
 		</div>
-		
 	</div>
-	<script type="text/javascript">
-		var url = window.location.href + '';
-		var flag = 0;
-		if(url.indexOf('cameraDistribution')>0) {
-			flag = 1;
-		}else if(url.indexOf('photoIdentification')>0) {
-			flag = 2;
-		}else if(url.indexOf('historicalData')>0) {
-			flag = 3;
-		}
-		console.log(flag);
-		var app = new Vue({
-			el:"#baseApp",
-			data: {
-				cameraDistributionClass : flag==1 ? 'myClass layui-this' : 'myClass',
-				photoIdentificationClass : flag==2 ? 'myClass layui-this' : 'myClass',
-				historicalDataClass : flag==3 ? 'myClass layui-this' : 'myClass'
-			}
-		});
-	</script>
 </body>
 </html>
+<script>
+	setTimeout(function() {
+		var url = window.location.href;
+		if (url.indexOf('cameraDistribution') > 0) {
+			$('#li1').addClass('layui-this');
+			$('#li2').removeClass('layui-this');
+			$('#li3').removeClass('layui-this');
+		} else if (url.indexOf('photoIdentification') > 0) {
+			$('#li1').removeClass('layui-this');
+			$('#li2').addClass('layui-this');
+			$('#li3').removeClass('layui-this');
+		} else if (url.indexOf('historicalData') > 0) {
+			$('#li1').removeClass('layui-this');
+			$('#li2').removeClass('layui-this');
+			$('#li3').addClass('layui-this');
+		} else if (url.indexOf('statisticsByAnimal') > 0) {
+			$('#li1').removeClass('layui-this');
+			$('#li4').addClass('layui-nav-itemed');
+			$('#dd1').addClass('layui-this');
+		} else if (url.indexOf('statisticsByTime') > 0) {
+			$('#li1').removeClass('layui-this');
+			$('#li4').addClass('layui-nav-itemed');
+			$('#dd2').addClass('layui-this');
+		} else if (url.indexOf('statisticsByDistribution') > 0) {
+			$('#li1').removeClass('layui-this');
+			$('#li4').addClass('layui-nav-itemed');
+			$('#dd3').addClass('layui-this');
+		}
+	}, 100);
+</script>

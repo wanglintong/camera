@@ -35,23 +35,29 @@
 /**文件上传css**/
 #selectDiv {
 	float:left;
-	margin: 50px auto;
-	margin-left:30px;
+	margin-left:2%;
 	padding:0px;
 	width: 10%;
-	min-height: 450px;
-	max-height:450px;
+	min-height: 384px;
+	max-height:384px;
 }
 #photos {
 	float:left;
-	margin: 50px auto;
-	margin-left:70px;
-	padding:20px;
-	width: 78%;
-	min-height: 450px;
-	max-height:450px;
+	margin-left:5%;
+	padding:0px;
+	width: 45%;
+	min-height: 384px;
+	max-height:384px;
 	overflow: auto;
 	background: aliceblue;
+}
+#photoMsg {
+	float:left;
+	margin-left:2%;
+	width: 35%;
+	min-height: 390px;
+	max-height:390px;
+	border:3px solid #DDDDDD;
 }
 .checkTR {
 	background-color: 	#DDDDDD;

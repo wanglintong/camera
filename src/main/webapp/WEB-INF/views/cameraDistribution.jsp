@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/res/css/cameraDistribution.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/res/webuploader/css/webuploader.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/res/webuploader/css/diyUpload.css">
-<link rel="stylesheet" href="https://openlayers.org/en/v4.1.1/css/ol.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/res/openlayer/ol.css" type="text/css">
 <div id="app">
 	<blockquote class="layui-elem-quote">
 		<div style="position: relative; height: 26px">
@@ -341,5 +341,5 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/res/webuploader/js/webuploader.html5only.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/res/webuploader/js/diyUpload.js"></script>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-<script src="https://openlayers.org/en/v4.1.1/build/ol.js"></script>
+<script src="${pageContext.request.contextPath }/res/openlayer/ol.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/res/js/cameraDistribution.js"></script>

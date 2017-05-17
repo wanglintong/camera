@@ -45,7 +45,7 @@
 			}
 			
 			var webUploader = getUploader( opt );
-			
+			$.wup = webUploader;
 			if ( !WebUploader.Uploader.support() ) {
 				alert( ' 上传组件不支持您的浏览器！');
 				return false;
@@ -143,12 +143,12 @@
 			*/
 			//配置生成缩略图的选项
 			thumb:{
-				width:170,
-				height:150,
+				width:1024,
+				height:768,
 				// 图片质量，只有type为`image/jpeg`的时候才有效。
 				quality:70,
 				// 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
-				allowMagnify:false,
+				allowMagnify:true,
 				// 是否允许裁剪。
 				crop:true,
 				// 为空的话则保留原有图片格式。
@@ -192,6 +192,7 @@
 	//取消事件;	
 	function removeLi ( $li ,file_id ,webUploader) {
 		webUploader.removeFile( file_id );
+		console.log('zz = ' + file_id);
 		if ( $li.siblings('li').length <= 0 ) {
 			$li.parents('.parentFileBox').remove();
 		} else {
@@ -288,7 +289,7 @@
 		//生成预览缩略图;
 		webUploader.makeThumb( file, function( error, dataSrc ) {
 			if ( !error ) {	
-				$fileBox.find('.viewThumb').append('<img src="'+dataSrc+'" >');
+				$fileBox.find('.viewThumb').append('<img onclick="showMsg(this)" src="'+dataSrc+'" >');
 			}
 		});	
 	}

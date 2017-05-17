@@ -29,4 +29,9 @@ public class TestController {
 		map.put("state", "ok");
 		return map;
 	}
+	
+	@RequestMapping("/test")
+	public String toTestPage() {
+		return "test";
+	}
 }

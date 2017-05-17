@@ -20,4 +20,19 @@ public class HomeController {
 	public String historicalData() {
 		return "historicalData";
 	}
+	
+	@RequestMapping("/statisticsByAnimal")
+	public String statisticsByAnimal() {
+		return "statisticsByAnimal";
+	}
+	
+	@RequestMapping("/statisticsByTime")
+	public String statisticsByTime() {
+		return "statisticsByTime";
+	}
+	
+	@RequestMapping("/statisticsByDistribution")
+	public String statisticsByDistribution() {
+		return "statisticsByDistribution";
+	}
 }

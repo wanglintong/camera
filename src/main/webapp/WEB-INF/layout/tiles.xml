@@ -16,4 +16,13 @@
 	<definition name="historicalData" extends="base">
 		<put-attribute name="body" value="/WEB-INF/views/historicalData.jsp" />
 	</definition>
+	<definition name="statisticsByAnimal" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/statisticsByAnimal.jsp" />
+	</definition>
+	<definition name="statisticsByTime" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/statisticsByTime.jsp" />
+	</definition>
+	<definition name="statisticsByDistribution" extends="base">
+		<put-attribute name="body" value="/WEB-INF/views/statisticsByDistribution.jsp" />
+	</definition>
 </tiles-definitions>
