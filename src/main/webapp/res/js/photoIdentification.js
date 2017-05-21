@@ -208,7 +208,7 @@ function showMsg(img) {
 	lastClickLiId = $(li).attr('id');
 	currentImg = $(img).attr('src');
 	$(li).attr('style', 'border:5px solid black');
-	$('#imgInfo').attr('src', $(img).attr('src'));
+	$('#imgInfo2').attr('src', $(img).attr('src'));
 }
 //监听键盘4个方向键 enter delete
 $(document).keydown(function(event) {
@@ -232,7 +232,7 @@ $(document).keydown(function(event) {
 			if(id!=undefined) {
 				$(prev).attr('style', 'border:5px solid black');
 				var img = $(prev).children(":first").children(":first");
-				$('#imgInfo').attr('src', $(img).attr('src'));
+				$('#imgInfo2').attr('src', $(img).attr('src'));
 				
 				lastClickLiId = id;
 				currentImg = $(img).attr('src');
@@ -267,7 +267,7 @@ $(document).keydown(function(event) {
 				$(prev).attr('style','border:5px solid black');
 				
 				var img = $(prev).children(":first").children(":first");
-				$('#imgInfo').attr('src', $(img).attr('src'));
+				$('#imgInfo2').attr('src', $(img).attr('src'));
 				
 				lastClickLiId = id;
 				currentImg = $(img).attr('src');
@@ -283,7 +283,7 @@ $(document).keydown(function(event) {
 				$(prev).attr('style','border:5px solid black');
 				
 				var img = $(prev).children(":first").children(":first");
-				$('#imgInfo').attr('src', $(img).attr('src'));
+				$('#imgInfo2').attr('src', $(img).attr('src'));
 				
 				lastClickLiId = id;
 				currentImg = $(img).attr('src');
@@ -299,7 +299,7 @@ $(document).keydown(function(event) {
 				$(next).attr('style','border:5px solid black');
 				
 				var img = $(next).children(":first").children(":first");
-				$('#imgInfo').attr('src', $(img).attr('src'));
+				$('#imgInfo2').attr('src', $(img).attr('src'));
 				
 				lastClickLiId = id;
 				currentImg = $(img).attr('src');
@@ -315,7 +315,7 @@ $(document).keydown(function(event) {
 				$(next).attr('style','border:5px solid black');
 				
 				var img = $(next).children(":first").children(":first");
-				$('#imgInfo').attr('src', $(img).attr('src'));
+				$('#imgInfo2').attr('src', $(img).attr('src'));
 				
 				lastClickLiId = id;
 				currentImg = $(img).attr('src');

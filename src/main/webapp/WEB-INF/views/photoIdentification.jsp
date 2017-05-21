@@ -140,7 +140,7 @@ a:-webkit-any-link {
 			<div id="as"></div>
 		</div>
 		<div id="photoMsg">
-			<img id="imgInfo" style="width: 100%; height: 100%" />
+			<img id="imgInfo2" style="width: 100%; height: 100%" />
 		</div>
 		<div style="float: right; margin-right: 200px; margin-top: 60px">
 			<button class="layui-btn" @click='preStep'>上一步</button>
